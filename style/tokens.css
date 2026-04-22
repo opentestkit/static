@@ -1,0 +1,143 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   Open Test Kit — Design Tokens
+   static.opentestkit.org/style/tokens.css
+
+   All variables namespaced --otk-* to avoid conflicts with
+   Tailwind v4 (@theme owns --color-*, --font-*, --text-*, etc.)
+
+   Import order: tokens.css → base.css → components.css
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ─── PRIMITIVE: GRAYSCALE ──────────────────────────────────────── */
+  --otk-gray-0:    #08080F;
+  --otk-gray-100:  #1a1a1a;
+  --otk-gray-200:  #333333;
+  --otk-gray-300:  #4d4d4d;
+  --otk-gray-400:  #666666;
+  --otk-gray-500:  #808080;
+  --otk-gray-600:  #999999;
+  --otk-gray-700:  #b3b3b3;
+  --otk-gray-800:  #cccccc;
+  --otk-gray-900:  #e6e6e6;
+  --otk-gray-1000: #ffffff;
+
+  /* ─── PRIMITIVE: RAINBOW ───────────────────────────────────────── */
+  /* Calibrated AAA on dark; see light theme overrides for status use */
+  --otk-red:    #ff8080;
+  --otk-orange: #ffaa66;
+  --otk-yellow: #e6d060;
+  --otk-lime:   #90c060;
+  --otk-green:  #60b87a;
+  --otk-teal:   #60b8aa;
+  --otk-cyan:   #60c8d8;
+  --otk-blue:   #80a8e8;
+  --otk-indigo: #9898e8;
+  --otk-violet: #b888e0;
+  --otk-pink:   #e880b0;
+  --otk-rose:   #f09090;
+
+  /* ─── PRIMITIVE: ACCENT ────────────────────────────────────────── */
+  --otk-color-accent:               #4816FF;
+  --otk-color-accent-dim:           #2D00CC;
+  --otk-color-accent-subtle:        #7A50FF;
+  --otk-color-accent-surface-dark:  #110830;
+  --otk-color-accent-surface-light: #EEE9FF;
+
+  /* ─── SEMANTIC: SURFACES (dark default) ────────────────────────── */
+  --otk-color-bg:            var(--otk-gray-0);
+  --otk-color-bg-raised:     var(--otk-gray-100);
+  --otk-color-bg-elevated:   var(--otk-gray-200);
+  --otk-color-bg-overlay:    var(--otk-gray-200);
+  --otk-color-border:        var(--otk-gray-200);
+  --otk-color-border-subtle: var(--otk-gray-100);
+
+  /* ─── SEMANTIC: TEXT (dark default) ───────────────────────────── */
+  --otk-color-text:           var(--otk-gray-1000);  /* 21:1   ✓ AAA */
+  --otk-color-text-secondary: var(--otk-gray-900);   /* 17.7:1 ✓ AAA */
+  --otk-color-text-muted:     var(--otk-gray-800);   /* 13.5:1 ✓ AAA */
+  --otk-color-text-dim:       var(--otk-gray-700);   /* 10.2:1 ✓ AAA */
+  --otk-color-text-disabled:  var(--otk-gray-600);   /* 7.4:1  ✓ AAA */
+
+  /* ─── SEMANTIC: STATUS (dark default) ─────────────────────────── */
+  --otk-color-note:    var(--otk-gray-600);
+  --otk-color-success: var(--otk-green);
+  --otk-color-warning: var(--otk-yellow);
+  --otk-color-danger:  var(--otk-red);
+
+  /* ─── TYPOGRAPHY ───────────────────────────────────────────────── */
+  --otk-font-sans:  'IBM Plex Sans',  sans-serif;
+  --otk-font-serif: 'IBM Plex Serif', serif;
+  --otk-font-mono:  'IBM Plex Mono',  monospace;
+  --otk-font-math:  'IBM Plex Math',  serif;
+
+  --otk-text-xs:   0.75rem;
+  --otk-text-sm:   0.875rem;
+  --otk-text-base: 1rem;
+  --otk-text-lg:   1.125rem;
+  --otk-text-xl:   1.25rem;
+  --otk-text-2xl:  1.5rem;
+  --otk-text-3xl:  1.875rem;
+  --otk-text-4xl:  2.25rem;
+
+  --otk-leading-tight:  1.25;
+  --otk-leading-normal: 1.6;
+  --otk-leading-loose:  1.8;
+
+  --otk-tracking-tight:  -0.02em;
+  --otk-tracking-normal: 0;
+  --otk-tracking-wide:   0.06em;
+  --otk-tracking-wider:  0.12em;
+
+  /* ─── SPACING ──────────────────────────────────────────────────── */
+  --otk-space-1:  0.25rem;
+  --otk-space-2:  0.5rem;
+  --otk-space-3:  0.75rem;
+  --otk-space-4:  1rem;
+  --otk-space-6:  1.5rem;
+  --otk-space-8:  2rem;
+  --otk-space-12: 3rem;
+  --otk-space-16: 4rem;
+  --otk-space-24: 6rem;
+
+  /* ─── LAYOUT ───────────────────────────────────────────────────── */
+  --otk-measure:   68ch;
+  --otk-radius-sm: 2px;
+  --otk-radius:    3px;
+}
+
+/* ─── ACCENT SURFACE PER THEME ─────────────────────────────────────── */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --otk-color-accent-surface: var(--otk-color-accent-surface-dark);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --otk-color-accent-surface: var(--otk-color-accent-surface-light);
+
+  /* surfaces */
+  --otk-color-bg:            #F4F4F6;
+  --otk-color-bg-raised:     #FFFFFF;
+  --otk-color-bg-elevated:   #FFFFFF;
+  --otk-color-bg-overlay:    #FFFFFF;
+
+  /* borders */
+  --otk-color-border:        var(--otk-gray-800);   /* #cccccc on white — visible */
+  --otk-color-border-subtle: var(--otk-gray-900);   /* #e6e6e6 — subtle */
+
+  /* text — inverted (dark on light) */
+  --otk-color-text:           var(--otk-gray-0);    /* #08080F on #F4F4F6 — AAA */
+  --otk-color-text-secondary: var(--otk-gray-100);  /* #1a1a1a */
+  --otk-color-text-muted:     var(--otk-gray-200);  /* #333333 */
+  --otk-color-text-dim:       var(--otk-gray-300);  /* #4d4d4d */
+  --otk-color-text-disabled:  var(--otk-gray-400);  /* #666666 */
+
+  /* status — darkened for AAA contrast on #F4F4F6 */
+  --otk-color-note:    #5C6070;
+  --otk-color-success: #1A8040;
+  --otk-color-warning: #8C6600;
+  --otk-color-danger:  #CC1A1A;
+}

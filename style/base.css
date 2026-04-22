@@ -1,0 +1,484 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   Open Test Kit — Base Styles
+   static.opentestkit.org/style/base.css
+
+   Reset, element-level styles, and markdown content rendering.
+   Styles HTML elements directly — no class selectors except .lead,
+   .small, .task-list, .table-wrap, .table-striped, and .footnotes
+   which are standard markdown output patterns.
+
+   Requires: tokens.css
+   Import order: tokens.css → base.css → components.css
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@import url('https://static.opentestkit.org/fonts/ibm-plex.css');
+
+/* ─── RESET ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* form elements don't inherit font by default in most browsers */
+input, textarea, select, button { font: inherit; }
+
+html {
+  background: var(--otk-color-bg);
+  color: var(--otk-color-text);
+  font-family: var(--otk-font-sans);
+  font-size: 16px;
+  line-height: var(--otk-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+  text-align: justify;
+  hyphens: auto;
+  text-justify: inter-word;
+}
+
+body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: var(--otk-space-16) var(--otk-space-8);
+}
+
+/* ─── SELECTION ──────────────────────────────────────────────────────── */
+::selection {
+  background: var(--otk-gray-300);
+  color: var(--otk-color-text);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════════════ */
+
+h1 {
+  font-family: var(--otk-font-serif);
+  font-size: var(--otk-text-4xl);
+  font-weight: 300;
+  line-height: var(--otk-leading-tight);
+  letter-spacing: var(--otk-tracking-tight);
+  color: var(--otk-color-text);
+}
+
+h2 {
+  font-family: var(--otk-font-serif);
+  font-size: var(--otk-text-2xl);
+  font-weight: 400;
+  line-height: var(--otk-leading-tight);
+  color: var(--otk-color-text);
+}
+
+h3 {
+  font-family: var(--otk-font-sans);
+  font-size: var(--otk-text-lg);
+  font-weight: 500;
+  color: var(--otk-color-text);
+}
+
+h4 {
+  font-family: var(--otk-font-mono);
+  font-size: var(--otk-text-sm);
+  font-weight: 400;
+  letter-spacing: var(--otk-tracking-wide);
+  text-transform: uppercase;
+  color: var(--otk-color-text-secondary);
+}
+
+h5 {
+  font-family: var(--otk-font-sans);
+  font-size: var(--otk-text-sm);
+  font-weight: 600;
+  color: var(--otk-color-text-secondary);
+}
+
+h6 {
+  font-family: var(--otk-font-mono);
+  font-size: var(--otk-text-xs);
+  font-weight: 400;
+  letter-spacing: var(--otk-tracking-wide);
+  text-transform: uppercase;
+  color: var(--otk-color-text-muted);
+}
+
+/* code inside headings inherits heading size, not the small code default */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-size: 0.85em;
+  font-weight: inherit;
+  letter-spacing: var(--otk-tracking-normal);
+  text-transform: none;
+}
+
+/* heading spacing when stacked without intervening prose */
+h1 + h2, h1 + h3, h1 + h4,
+h2 + h3, h2 + h4,
+h3 + h4, h3 + h5,
+h4 + h5, h4 + h6 {
+  margin-top: var(--otk-space-3);
+}
+
+p {
+  max-width: var(--otk-measure);
+  color: var(--otk-color-text-secondary);
+  line-height: var(--otk-leading-loose);
+  overflow-wrap: break-word;
+}
+
+p + p { margin-top: var(--otk-space-4); }
+
+.lead {
+  font-family: var(--otk-font-serif);
+  font-size: var(--otk-text-xl);
+  font-weight: 300;
+  color: var(--otk-color-text-secondary);
+  line-height: var(--otk-leading-normal);
+  max-width: var(--otk-measure);
+}
+
+small, .small {
+  font-size: var(--otk-text-xs);
+  color: var(--otk-color-text-muted);
+  font-family: var(--otk-font-mono);
+  letter-spacing: var(--otk-tracking-wide);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LINKS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+a {
+  color: var(--otk-color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--otk-gray-600);
+  transition: text-decoration-color 0.15s;
+}
+
+a:hover { text-decoration-color: currentColor; }
+
+a:visited { color: var(--otk-color-accent); }
+a:active { color: var(--otk-orange); }
+
+a:focus-visible {
+  outline: 2px solid var(--otk-color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INLINE TEXT
+   ═══════════════════════════════════════════════════════════════════════ */
+
+strong, b { font-weight: 600; color: var(--otk-color-text); }
+em, i { font-style: italic; }
+s, del { text-decoration: line-through; color: var(--otk-color-text-dim); }
+ins { text-decoration: underline; text-decoration-style: dashed; text-underline-offset: 0.15em; }
+u { text-decoration: underline; text-underline-offset: 0.15em; }
+
+mark {
+  background: color-mix(in srgb, var(--otk-yellow) 25%, transparent);
+  color: var(--otk-color-text);
+  padding: 0.05em 0.2em;
+  border-radius: var(--otk-radius-sm);
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
+  cursor: help;
+}
+
+kbd {
+  font-family: var(--otk-font-mono);
+  font-size: 0.85em;
+  background: var(--otk-color-bg-elevated);
+  color: var(--otk-color-text);
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--otk-color-border);
+  border-bottom-width: 2px;
+  border-radius: var(--otk-radius-sm);
+}
+
+var {
+  font-family: var(--otk-font-serif);
+  font-style: italic;
+  color: var(--otk-color-text);
+}
+
+samp {
+  font-family: var(--otk-font-mono);
+  font-size: 0.875em;
+  color: var(--otk-color-text-muted);
+}
+
+sup, sub { font-size: 0.75em; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+q { font-style: italic; }
+q::before { content: "\201C"; color: var(--otk-color-text-dim); }
+q::after { content: "\201D"; color: var(--otk-color-text-dim); }
+
+cite { font-style: italic; color: var(--otk-color-text-muted); }
+
+dfn { font-style: italic; font-weight: 500; color: var(--otk-color-text); }
+
+time { font-family: var(--otk-font-mono); font-size: var(--otk-text-sm); color: var(--otk-color-text-muted); }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CODE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+code {
+  font-family: var(--otk-font-mono);
+  font-size: 0.875em;
+  background: var(--otk-color-bg-elevated);
+  color: var(--otk-color-text-secondary);
+  padding: 0.1em 0.4em;
+  border-radius: var(--otk-radius-sm);
+}
+
+pre {
+  font-family: var(--otk-font-mono);
+  font-size: var(--otk-text-sm);
+  background: var(--otk-color-bg-raised);
+  border: 1px solid var(--otk-color-border);
+  border-left: 3px solid var(--otk-color-border-subtle);
+  padding: var(--otk-space-6);
+  border-radius: var(--otk-radius);
+  overflow-x: auto;
+  line-height: var(--otk-leading-loose);
+  color: var(--otk-color-text-secondary);
+}
+
+pre code { background: none; padding: 0; font-size: inherit; }
+
+/* syntax highlighting tokens */
+pre .comment { color: var(--otk-color-text-dim); }
+pre .key     { color: var(--otk-gray-800); }
+pre .val     { color: var(--otk-gray-700); }
+pre .kw      { color: var(--otk-blue); }
+pre .fn      { color: var(--otk-teal); }
+pre .str     { color: var(--otk-lime); }
+pre .num     { color: var(--otk-orange); }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BLOCKQUOTE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+blockquote {
+  border-left: 3px solid var(--otk-color-border);
+  padding: var(--otk-space-4) var(--otk-space-6);
+  margin: var(--otk-space-4) 0;
+  background: var(--otk-color-bg-raised);
+  border-radius: 0 var(--otk-radius) var(--otk-radius) 0;
+}
+
+blockquote p { color: var(--otk-color-text-muted); max-width: none; }
+blockquote cite { display: block; margin-top: var(--otk-space-2); font-size: var(--otk-text-sm); }
+
+blockquote blockquote {
+  margin-top: var(--otk-space-3);
+  border-left-color: var(--otk-gray-300);
+}
+
+/* nested elements inside blockquotes */
+blockquote pre { margin-top: var(--otk-space-3); border-left: none; background: var(--otk-color-bg-elevated); }
+blockquote ul, blockquote ol { margin-top: var(--otk-space-3); padding-left: var(--otk-space-6); }
+
+/* code blocks inside list items */
+li > pre { margin-top: var(--otk-space-2); margin-bottom: var(--otk-space-2); }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LISTS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+ul, ol {
+  padding-left: var(--otk-space-6);
+  color: var(--otk-color-text-secondary);
+  max-width: var(--otk-measure);
+}
+
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+
+li { padding: var(--otk-space-1) 0; line-height: var(--otk-leading-normal); overflow-wrap: break-word; }
+li > ul, li > ol { margin-top: var(--otk-space-1); }
+
+ul ul { list-style-type: circle; }
+ul ul ul { list-style-type: square; }
+
+/* task list (markdown output) */
+.task-list { list-style: none; padding-left: 0; }
+.task-list li { display: flex; align-items: baseline; gap: var(--otk-space-2); }
+.task-list input[type="checkbox"] { margin: 0; }
+
+/* definition list */
+dl { max-width: var(--otk-measure); }
+dt {
+  font-weight: 600;
+  color: var(--otk-color-text);
+  margin-top: var(--otk-space-4);
+}
+dt:first-child { margin-top: 0; }
+dd {
+  color: var(--otk-color-text-secondary);
+  padding-left: var(--otk-space-6);
+  margin-top: var(--otk-space-1);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HORIZONTAL RULE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+hr {
+  border: none;
+  border-top: 1px solid var(--otk-color-border);
+  margin: var(--otk-space-8) 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FIGURE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+figure { margin: var(--otk-space-6) 0; }
+
+figure img {
+  display: block;
+  max-width: 100%;
+  border-radius: var(--otk-radius);
+  border: 1px solid var(--otk-color-border-subtle);
+}
+
+figcaption {
+  font-family: var(--otk-font-mono);
+  font-size: var(--otk-text-xs);
+  color: var(--otk-color-text-dim);
+  margin-top: var(--otk-space-2);
+  letter-spacing: var(--otk-tracking-wide);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DETAILS / SUMMARY
+   ═══════════════════════════════════════════════════════════════════════ */
+
+details {
+  border: 1px solid var(--otk-color-border);
+  border-radius: var(--otk-radius);
+  padding: var(--otk-space-4) var(--otk-space-6);
+  background: var(--otk-color-bg-raised);
+}
+
+details + details { margin-top: var(--otk-space-3); }
+
+summary {
+  font-family: var(--otk-font-mono);
+  font-size: var(--otk-text-sm);
+  font-weight: 400;
+  color: var(--otk-color-text);
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::before {
+  content: "▸ ";
+  color: var(--otk-color-text-dim);
+  font-size: 0.8em;
+}
+
+details[open] summary::before { content: "▾ "; }
+
+details > *:not(summary) { margin-top: var(--otk-space-3); }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.table-wrap { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; font-size: var(--otk-text-sm); }
+
+thead th {
+  font-family: var(--otk-font-mono);
+  font-size: var(--otk-text-xs);
+  font-weight: 500;
+  letter-spacing: var(--otk-tracking-wider);
+  text-transform: uppercase;
+  color: var(--otk-color-text-dim);
+  text-align: left;
+  padding: var(--otk-space-3) var(--otk-space-4);
+  border-bottom: 1px solid var(--otk-color-border);
+}
+
+tbody td {
+  padding: var(--otk-space-3) var(--otk-space-4);
+  color: var(--otk-color-text-secondary);
+  border-bottom: 1px solid var(--otk-color-border-subtle);
+  font-family: var(--otk-font-sans);
+  vertical-align: top;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--otk-color-bg-elevated); }
+td code { font-size: var(--otk-text-xs); }
+
+/* striped variant */
+.table-striped tbody tr:nth-child(even) td { background: var(--otk-color-bg-raised); }
+
+/* column alignment — matches markdown :--- / :---: / ---: */
+td.text-left, th.text-left { text-align: left; }
+td.text-center, th.text-center { text-align: center; }
+td.text-right, th.text-right { text-align: right; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--otk-font-mono); }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FOOTNOTES (markdown output)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.footnotes {
+  margin-top: var(--otk-space-8);
+  padding-top: var(--otk-space-6);
+  border-top: 1px solid var(--otk-color-border-subtle);
+  font-size: var(--otk-text-sm);
+  color: var(--otk-color-text-muted);
+}
+
+.footnotes ol { padding-left: var(--otk-space-6); }
+.footnotes li { padding: var(--otk-space-1) 0; }
+
+sup a {
+  font-family: var(--otk-font-mono);
+  font-size: 0.7em;
+  text-decoration: none;
+  color: var(--otk-color-accent);
+}
+
+.footnote-backref { text-decoration: none; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE — ELEMENT-LEVEL
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  body { padding: var(--otk-space-8) var(--otk-space-4); }
+
+  h1 { font-size: var(--otk-text-2xl); }
+  h2 { font-size: var(--otk-text-xl); }
+  .lead { font-size: var(--otk-text-lg); }
+
+  pre { padding: var(--otk-space-4); font-size: var(--otk-text-xs); }
+
+  fieldset { padding: var(--otk-space-4); }
+}
