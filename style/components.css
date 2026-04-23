@@ -1075,7 +1075,9 @@ footer p {
    CODE COPY BUTTON
    ═══════════════════════════════════════════════════════════════════════ */
 
-pre { position: relative; }
+/* JS wraps each <pre> in .pre-wrap so the button sits outside the
+   pre's overflow-x:auto scroll container */
+.pre-wrap { position: relative; }
 
 .copy-btn {
   position: absolute;
@@ -1085,8 +1087,8 @@ pre { position: relative; }
   transition: opacity 0.15s, color 0.15s, border-color 0.15s;
 }
 
-pre:hover .copy-btn,
-pre:focus-within .copy-btn { opacity: 1; }
+.pre-wrap:hover .copy-btn,
+.pre-wrap:focus-within .copy-btn { opacity: 1; }
 
 .copy-btn.copied {
   color: var(--otk-color-success);

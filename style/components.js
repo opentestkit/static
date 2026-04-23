@@ -6,6 +6,11 @@
 /* ─── Copy button on <pre> blocks ───────────────────────────────────────── */
 
 document.querySelectorAll('pre').forEach(pre => {
+  const wrap = document.createElement('div');
+  wrap.className = 'pre-wrap';
+  pre.replaceWith(wrap);
+  wrap.appendChild(pre);
+
   const btn = document.createElement('button');
   btn.className = 'btn btn-ghost btn-sm copy-btn';
   btn.textContent = 'copy';
@@ -20,5 +25,5 @@ document.querySelectorAll('pre').forEach(pre => {
       }, 2000);
     });
   });
-  pre.appendChild(btn);
+  wrap.appendChild(btn);
 });
