@@ -1072,6 +1072,30 @@ footer p {
 
 
 /* ═══════════════════════════════════════════════════════════════════════
+   CODE COPY BUTTON
+   ═══════════════════════════════════════════════════════════════════════ */
+
+pre { position: relative; }
+
+.copy-btn {
+  position: absolute;
+  top: var(--otk-space-3);
+  right: var(--otk-space-3);
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+}
+
+pre:hover .copy-btn,
+pre:focus-within .copy-btn { opacity: 1; }
+
+.copy-btn.copied {
+  color: var(--otk-color-success);
+  border-color: color-mix(in srgb, var(--otk-color-success) 25%, transparent);
+  opacity: 1;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
    UTILITY
    ═══════════════════════════════════════════════════════════════════════ */
 

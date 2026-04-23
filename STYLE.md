@@ -19,6 +19,7 @@ Utility wins, but **never hard-code colors, spacing, or fonts** — always use `
   <link rel="stylesheet" href="https://static.opentestkit.org/style/tokens.css">
   <link rel="stylesheet" href="https://static.opentestkit.org/style/base.css">
   <link rel="stylesheet" href="https://static.opentestkit.org/style/components.css">
+  <script src="https://static.opentestkit.org/style/components.js" defer></script>
 
   <!-- Project-specific overrides (optional) -->
   <style>
@@ -156,6 +157,9 @@ Utility:  .type-stack, .gap-sm, .gap-md, .mt-4, .mt-6, .flex-row
           .task-list, .footnotes
 
 Markdown: .lead, .small, .task-list, .table-wrap, .table-striped, .footnotes
+
+JS (components.js):
+          pre → .copy-btn, .copy-btn.copied
 ```
 
 ## 5. Theme Usage
