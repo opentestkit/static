@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OTK Style Guide</title>
+  <link rel="stylesheet" href="https://static.opentestkit.org/style/tokens.css">
+  <link rel="stylesheet" href="https://static.opentestkit.org/style/base.css">
+  <link rel="stylesheet" href="https://static.opentestkit.org/style/components.css">
+  <script src="https://static.opentestkit.org/style/components.js" defer></script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="https://opentestkit.org" class="site-wordmark">OTK <span>/ Style Guide</span></a>
+    <ul class="nav-links">
+      <li><a href="#foundation">Foundation</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#components">Components</a></li>
+    </ul>
+  </nav>
+
+  <h1>OTK Style Guide</h1>
+  <p class="lead">Open Test Kit's design system in one page. Copy the import block, use semantic classes and <code>--otk-*</code> tokens, and your UI will look right.</p>
+
+  <hr>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOUNDATION
+       ═══════════════════════════════════════════════════════════ -->
+
+  <div class="section" id="foundation">
+    <p class="section-label">Foundation</p>
+
+    <h2>Import</h2>
+    <p>Add these four tags in order. Do not change the order or skip a file.</p>
+
+    <pre><code>&lt;html lang="en" data-theme="dark"&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="https://static.opentestkit.org/style/tokens.css"&gt;
+  &lt;link rel="stylesheet" href="https://static.opentestkit.org/style/base.css"&gt;
+  &lt;link rel="stylesheet" href="https://static.opentestkit.org/style/components.css"&gt;
+  &lt;script src="https://static.opentestkit.org/style/components.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+
+    <p class="mt-4"><code>data-theme="dark"</code> is required on <code>&lt;html&gt;</code>. For light mode, use <code>data-theme="light"</code>. The IBM Plex font family loads automatically from <code>base.css</code> — do not add a separate font import.</p>
+
+    <div class="callout callout-note mt-6">
+      <p class="callout-title">Rules</p>
+      <p>Never hard-code colors, spacing, or fonts. Always use <code>--otk-*</code> tokens. No inline <code>style=</code>. Reach for existing classes before writing new CSS.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TYPOGRAPHY
+       ═══════════════════════════════════════════════════════════ -->
+
+  <div class="section" id="typography">
+    <p class="section-label">Typography</p>
+
+    <h2>Headings</h2>
+    <p>Six levels. <code>h1</code>–<code>h2</code> use IBM Plex Serif; <code>h3</code> and <code>h5</code> use Sans; <code>h4</code> and <code>h6</code> use Mono in uppercase.</p>
+
+    <div class="type-stack mt-6">
+      <div>
+        <h1>h1 — IBM Plex Serif light, 2.25 rem</h1>
+      </div>
+      <div>
+        <h2>h2 — IBM Plex Serif regular, 1.5 rem</h2>
+      </div>
+      <div>
+        <h3>h3 — IBM Plex Sans medium, 1.125 rem</h3>
+      </div>
+      <div>
+        <h4>h4 — IBM Plex Mono uppercase, 0.875 rem</h4>
+      </div>
+      <div>
+        <h5>h5 — IBM Plex Sans semibold, 0.875 rem</h5>
+      </div>
+      <div>
+        <h6>h6 — IBM Plex Mono uppercase, 0.75 rem</h6>
+      </div>
+    </div>
+
+    <h2 class="mt-6">Paragraph styles</h2>
+
+    <p class="lead">Lead — IBM Plex Serif light at 1.25 rem. Use for subtitles and introductory sentences. Add class <code>.lead</code> to a <code>&lt;p&gt;</code>.</p>
+
+    <p>Body paragraph — IBM Plex Sans at 1 rem with 1.8 line-height. Max-width is capped at <code>--otk-measure</code> (68 ch). Text color is <code>--otk-color-text-secondary</code> rather than pure white for comfortable reading.</p>
+
+    <p><small>Small / caption — mono, 0.75 rem, wide tracking. Use <code>&lt;small&gt;</code> or class <code>.small</code>.</small></p>
+
+    <h2 class="mt-6">Inline elements</h2>
+
+    <p>
+      <strong>strong / bold</strong> &nbsp;·&nbsp;
+      <em>italic emphasis</em> &nbsp;·&nbsp;
+      <s>strikethrough</s> &nbsp;·&nbsp;
+      <ins>inserted text</ins> &nbsp;·&nbsp;
+      <mark>highlighted mark</mark> &nbsp;·&nbsp;
+      <code>inline code</code> &nbsp;·&nbsp;
+      <kbd>Cmd</kbd>+<kbd>K</kbd> &nbsp;·&nbsp;
+      <abbr title="Open Test Kit">OTK</abbr> &nbsp;·&nbsp;
+      H<sub>2</sub>O &nbsp;·&nbsp;
+      E=mc<sup>2</sup> &nbsp;·&nbsp;
+      <time>2026-04-22</time> &nbsp;·&nbsp;
+      <q>quoted text</q> &nbsp;·&nbsp;
+      <cite>A Citation</cite> &nbsp;·&nbsp;
+      <dfn>defined term</dfn>
+    </p>
+
+    <h2 class="mt-6">Links</h2>
+    <p>
+      <a href="#">Default link</a> &nbsp;·&nbsp;
+      <a href="#" class="btn btn-primary">btn-primary</a> &nbsp;·&nbsp;
+      <a href="#" class="btn btn-secondary">btn-secondary</a> &nbsp;·&nbsp;
+      <a href="#" class="btn btn-ghost">btn-ghost</a>
+    </p>
+
+    <h2 class="mt-6">Code blocks</h2>
+    <pre><code><span class="kw">function</span> <span class="fn">runTest</span>(<span class="key">suite</span>) {
+  <span class="comment">// iterate over each case</span>
+  <span class="kw">for</span> (<span class="kw">const</span> <span class="key">tc</span> <span class="kw">of</span> suite.cases) {
+    <span class="kw">const</span> <span class="key">result</span> = tc.<span class="fn">run</span>();
+    console.<span class="fn">log</span>(<span class="str">`[</span><span class="num">${tc.id}</span><span class="str">]`</span>, result.status);
+  }
+}</code></pre>
+
+    <p class="mt-4">Token classes for syntax highlighting: <code>.comment</code> <code>.key</code> <code>.val</code> <code>.kw</code> <code>.fn</code> <code>.str</code> <code>.num</code></p>
+
+    <h2 class="mt-6">Blockquote</h2>
+    <blockquote>
+      <p>High-density, dark-mode-first. Precision, mathematical contrast, "clean desk" aesthetic.</p>
+      <cite>OTK Design Principles</cite>
+    </blockquote>
+
+    <h2 class="mt-6">Lists</h2>
+    <div class="grid-2">
+      <div>
+        <h4>Unordered</h4>
+        <ul class="mt-4">
+          <li>First item</li>
+          <li>Second item
+            <ul>
+              <li>Nested circle</li>
+              <li>Another nested
+                <ul><li>Square level</li></ul>
+              </li>
+            </ul>
+          </li>
+          <li>Third item</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ordered</h4>
+        <ol class="mt-4">
+          <li>Import tokens.css</li>
+          <li>Import base.css</li>
+          <li>Import components.css</li>
+          <li>Add <code>data-theme="dark"</code></li>
+        </ol>
+      </div>
+    </div>
+
+    <h4 class="mt-6">Task list</h4>
+    <ul class="task-list mt-4">
+      <li><input type="checkbox" checked disabled> tokens.css imported</li>
+      <li><input type="checkbox" checked disabled> base.css imported</li>
+      <li><input type="checkbox" disabled> Custom tokens applied</li>
+    </ul>
+
+    <h4 class="mt-6">Definition list</h4>
+    <dl class="mt-4">
+      <dt>--otk-color-bg</dt>
+      <dd>The page background. Off-black <code>#08080F</code> in dark mode; <code>#F4F4F6</code> in light mode.</dd>
+      <dt>--otk-color-accent</dt>
+      <dd>Primary violet <code>#4816FF</code>. Used for interactive elements, focus rings, and emphasis.</dd>
+    </dl>
+
+    <h2 class="mt-6">Details / Summary</h2>
+    <details>
+      <summary>When should I override a token?</summary>
+      <p>Only when the default value doesn't work for your specific use case. Overrides must still use other <code>--otk-*</code> tokens — never raw hex or px.</p>
+    </details>
+    <details>
+      <summary>Can I use Tailwind alongside OTK?</summary>
+      <p>Yes. All OTK tokens are namespaced <code>--otk-*</code> to avoid conflicts with Tailwind v4's <code>--color-*</code>, <code>--font-*</code>, and <code>--text-*</code> variables.</p>
+    </details>
+
+    <h2 class="mt-6">Table</h2>
+    <div class="table-wrap mt-4">
+      <table>
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Dark value</th>
+            <th>Light value</th>
+            <th class="num">Contrast</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--otk-color-text</code></td>
+            <td>#ffffff</td>
+            <td>#08080F</td>
+            <td class="num">21:1</td>
+          </tr>
+          <tr>
+            <td><code>--otk-color-text-secondary</code></td>
+            <td>#e6e6e6</td>
+            <td>#1a1a1a</td>
+            <td class="num">17.7:1</td>
+          </tr>
+          <tr>
+            <td><code>--otk-color-text-muted</code></td>
+            <td>#cccccc</td>
+            <td>#333333</td>
+            <td class="num">13.5:1</td>
+          </tr>
+          <tr>
+            <td><code>--otk-color-text-dim</code></td>
+            <td>#b3b3b3</td>
+            <td>#4d4d4d</td>
+            <td class="num">10.2:1</td>
+          </tr>
+          <tr>
+            <td><code>--otk-color-text-disabled</code></td>
+            <td>#999999</td>
+            <td>#666666</td>
+            <td class="num">7.4:1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-4">Striped variant: add <code>.table-striped</code> to <code>&lt;table&gt;</code>.</p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       COLORS
+       ═══════════════════════════════════════════════════════════ -->
+
+  <div class="section" id="colors">
+    <p class="section-label">Colors</p>
+
+    <h2>Grayscale</h2>
+    <p>Primitive scale from <code>--otk-gray-0</code> (off-black) to <code>--otk-gray-1000</code> (white). Use semantic tokens in components — never raw grays.</p>
+
+    <div class="palette mt-6">
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-0)"></div><div class="swatch-label">gray-0</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-100)"></div><div class="swatch-label">gray-100</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-200)"></div><div class="swatch-label">gray-200</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-300)"></div><div class="swatch-label">gray-300</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-400)"></div><div class="swatch-label">gray-400</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-500)"></div><div class="swatch-label">gray-500</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-600)"></div><div class="swatch-label">gray-600</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-700)"></div><div class="swatch-label">gray-700</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-800)"></div><div class="swatch-label">gray-800</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-900)"></div><div class="swatch-label">gray-900</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-gray-1000)"></div><div class="swatch-label">gray-1000</div></div>
+    </div>
+
+    <h2 class="mt-6">Accent</h2>
+    <div class="palette mt-4">
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-accent)"></div><div class="swatch-label">accent</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-accent-dim)"></div><div class="swatch-label">dim</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-accent-subtle)"></div><div class="swatch-label">subtle</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-accent-surface)"></div><div class="swatch-label">surface</div></div>
+    </div>
+
+    <h2 class="mt-6">Status</h2>
+    <div class="palette mt-4">
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-success)"></div><div class="swatch-label">success</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-warning)"></div><div class="swatch-label">warning</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-danger)"></div><div class="swatch-label">danger</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-color-note)"></div><div class="swatch-label">note</div></div>
+    </div>
+
+    <h2 class="mt-6">Rainbow primitives</h2>
+    <div class="palette mt-4">
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-red)"></div><div class="swatch-label">red</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-orange)"></div><div class="swatch-label">orange</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-yellow)"></div><div class="swatch-label">yellow</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-lime)"></div><div class="swatch-label">lime</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-green)"></div><div class="swatch-label">green</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-teal)"></div><div class="swatch-label">teal</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-cyan)"></div><div class="swatch-label">cyan</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-blue)"></div><div class="swatch-label">blue</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-indigo)"></div><div class="swatch-label">indigo</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-violet)"></div><div class="swatch-label">violet</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-pink)"></div><div class="swatch-label">pink</div></div>
+      <div class="swatch-wrap"><div class="swatch" style="background:var(--otk-rose)"></div><div class="swatch-label">rose</div></div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       COMPONENTS
+       ═══════════════════════════════════════════════════════════ -->
+
+  <div class="section" id="components">
+    <p class="section-label">Components</p>
+
+    <!-- Buttons -->
+    <h2>Buttons</h2>
+    <div class="btn-group mt-4">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-danger">Danger</button>
+      <button class="btn btn-disabled">Disabled</button>
+      <button class="btn btn-primary btn-loading">Loading</button>
+    </div>
+    <div class="btn-group mt-4">
+      <button class="btn btn-primary btn-sm">Small primary</button>
+      <button class="btn btn-secondary btn-sm">Small secondary</button>
+      <button class="btn btn-ghost btn-sm">Small ghost</button>
+    </div>
+
+    <pre class="mt-6"><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-disabled"&gt;Disabled&lt;/button&gt;
+&lt;button class="btn btn-primary btn-loading"&gt;Loading&lt;/button&gt;
+&lt;!-- .btn-sm for smaller variants --&gt;</code></pre>
+
+    <!-- Tags -->
+    <h2 class="mt-6">Tags</h2>
+    <div class="flex-row gap-sm mt-4">
+      <span class="tag tag-ok">passing</span>
+      <span class="tag tag-warn">flaky</span>
+      <span class="tag tag-danger">failing</span>
+      <span class="tag tag-muted">skipped</span>
+    </div>
+    <pre class="mt-4"><code>&lt;span class="tag tag-ok"&gt;passing&lt;/span&gt;
+&lt;span class="tag tag-warn"&gt;flaky&lt;/span&gt;
+&lt;span class="tag tag-danger"&gt;failing&lt;/span&gt;
+&lt;span class="tag tag-muted"&gt;skipped&lt;/span&gt;</code></pre>
+
+    <!-- Badges -->
+    <h2 class="mt-6">Badges</h2>
+    <div class="flex-row gap-sm mt-4">
+      <span class="badge badge-default">default</span>
+      <span class="badge badge-success">success</span>
+      <span class="badge badge-warning">warning</span>
+      <span class="badge badge-danger">danger</span>
+      <span class="badge badge-accent">accent</span>
+      <span class="badge-count">12</span>
+    </div>
+    <pre class="mt-4"><code>&lt;span class="badge badge-success"&gt;success&lt;/span&gt;
+&lt;span class="badge-count"&gt;12&lt;/span&gt;</code></pre>
+
+    <!-- Callouts -->
+    <h2 class="mt-6">Callouts</h2>
+    <div class="callout-stack mt-4">
+      <div class="callout callout-note">
+        <p class="callout-title">Note</p>
+        <p>Neutral context, additional information, or a general reminder.</p>
+      </div>
+      <div class="callout callout-success">
+        <p class="callout-title">Success</p>
+        <p>Action completed or requirement met. Everything looks good.</p>
+      </div>
+      <div class="callout callout-warn">
+        <p class="callout-title">Warning</p>
+        <p>Something may need attention before proceeding.</p>
+      </div>
+      <div class="callout callout-danger">
+        <p class="callout-title">Danger</p>
+        <p>A critical issue that requires immediate action.</p>
+      </div>
+    </div>
+    <pre class="mt-4"><code>&lt;div class="callout callout-note"&gt;
+  &lt;p class="callout-title"&gt;Note&lt;/p&gt;
+  &lt;p&gt;Message text here.&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- variants: callout-note, callout-success, callout-warn, callout-danger --&gt;</code></pre>
+
+    <!-- Cards -->
+    <h2 class="mt-6">Cards</h2>
+    <div class="card-grid mt-4">
+      <div class="card">
+        <p class="card-title">Authentication Suite</p>
+        <p class="card-meta">last run 2 minutes ago &nbsp;·&nbsp; 14 tests</p>
+        <div class="card-body">
+          <p>Login, session, and token refresh flows. All green on the latest run.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-title">API Contracts</p>
+        <p class="card-meta">last run 8 minutes ago &nbsp;·&nbsp; 32 tests</p>
+        <div class="card-body">
+          <p>Validates request/response shape against the OpenAPI spec.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-title">Performance Budget</p>
+        <p class="card-meta">last run 1 hour ago &nbsp;·&nbsp; 6 tests</p>
+        <div class="card-body">
+          <p>Core Web Vitals and custom timing assertions on production endpoints.</p>
+        </div>
+      </div>
+    </div>
+    <pre class="mt-4"><code>&lt;div class="card-grid"&gt;
+  &lt;div class="card"&gt;
+    &lt;p class="card-title"&gt;Title&lt;/p&gt;
+    &lt;p class="card-meta"&gt;meta&lt;/p&gt;
+    &lt;div class="card-body"&gt;&lt;p&gt;Body.&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <!-- Forms -->
+    <h2 class="mt-6">Forms</h2>
+    <form class="form-stack mt-4" onsubmit="return false">
+      <div class="form-field">
+        <label for="project-name">Project name</label>
+        <input type="text" id="project-name" placeholder="my-test-suite">
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="env">Environment</label>
+          <select id="env">
+            <option>Production</option>
+            <option>Staging</option>
+            <option>Local</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="timeout">Timeout (ms)</label>
+          <input type="number" id="timeout" placeholder="5000">
+        </div>
+      </div>
+      <div class="form-field field-error">
+        <label for="token">API token</label>
+        <input type="text" id="token" value="bad-token">
+        <p class="form-hint">Token is invalid or expired.</p>
+      </div>
+      <div class="form-field field-success">
+        <label for="endpoint">Endpoint</label>
+        <input type="url" id="endpoint" value="https://api.example.com">
+      </div>
+      <div class="form-field">
+        <label for="notes">Notes</label>
+        <textarea id="notes" placeholder="Optional notes about this run…"></textarea>
+        <p class="form-hint">Markdown is supported.</p>
+      </div>
+      <fieldset>
+        <legend>Notifications</legend>
+        <div class="check-group mt-4">
+          <label><input type="checkbox" checked> Email on failure</label>
+          <label><input type="checkbox"> Slack on all runs</label>
+          <label><input type="checkbox" disabled> PagerDuty (coming soon)</label>
+        </div>
+      </fieldset>
+      <div class="form-field">
+        <label>Mode</label>
+        <div class="check-group mt-4">
+          <label><input type="radio" name="mode" checked> Sequential</label>
+          <label><input type="radio" name="mode"> Parallel</label>
+        </div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" checked>
+        <span class="toggle-track"></span>
+        Auto-retry on flake
+      </label>
+      <div class="btn-group">
+        <button class="btn btn-primary" type="submit">Save configuration</button>
+        <button class="btn btn-ghost" type="reset">Reset</button>
+      </div>
+    </form>
+
+    <!-- Nav: breadcrumbs, tabs, pagination -->
+    <h2 class="mt-6">Navigation</h2>
+
+    <h4>Breadcrumbs</h4>
+    <ul class="breadcrumbs mt-4">
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">my-test-suite</a></li>
+      <li><a href="#">Runs</a></li>
+      <li><span aria-current="page">#1042</span></li>
+    </ul>
+
+    <h4 class="mt-6">Tabs</h4>
+    <ul class="tabs mt-4">
+      <li class="active"><a href="#">Results</a></li>
+      <li><a href="#">Coverage</a></li>
+      <li><a href="#">Logs</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+    <div class="tab-content">Tab content renders here with <code>.tab-content</code>.</div>
+
+    <h4 class="mt-6">Pagination</h4>
+    <ul class="pagination mt-4">
+      <li><span class="disabled">←</span></li>
+      <li><span class="active">1</span></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><span class="ellipsis">…</span></li>
+      <li><a href="#">12</a></li>
+      <li><a href="#">→</a></li>
+    </ul>
+
+    <!-- Progress -->
+    <h2 class="mt-6">Progress</h2>
+    <div class="type-stack mt-4">
+      <div>
+        <div class="progress"><div class="progress-bar" style="width:72%"></div></div>
+        <small class="mt-4" style="display:block;margin-top:var(--otk-space-1)">72% — accent (default)</small>
+      </div>
+      <div>
+        <div class="progress"><div class="progress-bar progress-bar-warn" style="width:55%"></div></div>
+        <small style="display:block;margin-top:var(--otk-space-1)">55% — warning</small>
+      </div>
+      <div>
+        <div class="progress"><div class="progress-bar progress-bar-danger" style="width:23%"></div></div>
+        <small style="display:block;margin-top:var(--otk-space-1)">23% — danger</small>
+      </div>
+    </div>
+    <pre class="mt-4"><code>&lt;div class="progress"&gt;
+  &lt;div class="progress-bar" style="width:72%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- modifiers: progress-bar-warn, progress-bar-danger --&gt;</code></pre>
+
+    <!-- Toasts -->
+    <h2 class="mt-6">Toasts</h2>
+    <div class="type-stack mt-4">
+      <div class="toast toast-success">
+        <span class="toast-icon">✓</span>
+        <div class="toast-body">
+          <p class="toast-title">Run complete</p>
+          <p class="toast-msg">14/14 tests passed in 2.4 s.</p>
+        </div>
+        <button class="toast-close">×</button>
+      </div>
+      <div class="toast toast-danger">
+        <span class="toast-icon">✕</span>
+        <div class="toast-body">
+          <p class="toast-title">Run failed</p>
+          <p class="toast-msg">3 tests failed. Check the results tab for details.</p>
+        </div>
+        <button class="toast-close">×</button>
+      </div>
+      <div class="toast toast-warning">
+        <span class="toast-icon">!</span>
+        <div class="toast-body">
+          <p class="toast-title">Flaky test detected</p>
+          <p class="toast-msg">auth/session.spec passed on retry. Consider investigating.</p>
+        </div>
+        <button class="toast-close">×</button>
+      </div>
+    </div>
+
+    <!-- Skeleton -->
+    <h2 class="mt-6">Skeleton loading</h2>
+    <div class="card mt-4" style="max-width:360px">
+      <div class="skeleton skeleton-circle" style="width:36px;height:36px;margin-bottom:var(--otk-space-4)"></div>
+      <div class="skeleton skeleton-heading"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text" style="width:70%"></div>
+    </div>
+    <pre class="mt-4"><code>&lt;div class="skeleton skeleton-heading"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-text"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-circle" style="width:36px;height:36px"&gt;&lt;/div&gt;</code></pre>
+
+    <!-- KV list -->
+    <h2 class="mt-6">Key-value list</h2>
+    <div class="kv-list mt-4" style="max-width:480px">
+      <div class="kv-item">
+        <span class="kv-key">Run ID</span>
+        <span class="kv-val">#1042</span>
+      </div>
+      <div class="kv-item">
+        <span class="kv-key">Duration</span>
+        <span class="kv-val">2.4 s</span>
+      </div>
+      <div class="kv-item">
+        <span class="kv-key">Tests</span>
+        <span class="kv-val">14 / 14 passed</span>
+      </div>
+      <div class="kv-item">
+        <span class="kv-key">Environment</span>
+        <span class="kv-val">production</span>
+      </div>
+    </div>
+
+    <!-- Avatars -->
+    <h2 class="mt-6">Avatars</h2>
+    <div class="flex-row gap-md mt-4">
+      <span class="avatar avatar-sm">AK</span>
+      <span class="avatar">JS</span>
+      <span class="avatar avatar-lg">MR</span>
+      <div class="avatar-group">
+        <span class="avatar">A</span>
+        <span class="avatar">B</span>
+        <span class="avatar">C</span>
+        <span class="avatar">+4</span>
+      </div>
+    </div>
+
+    <!-- Tooltip -->
+    <h2 class="mt-6">Tooltip</h2>
+    <p class="mt-4">
+      Hover over
+      <span class="tooltip" data-tip="ISO 8601 timestamp">2026-04-22T09:00:00Z</span>
+      to see the tooltip. Uses the <code>data-tip</code> attribute on any element with class <code>.tooltip</code>.
+    </p>
+
+    <!-- Divider label -->
+    <h2 class="mt-6">Divider with label</h2>
+    <div class="divider-label mt-4">or</div>
+
+    <!-- Media object -->
+    <h2 class="mt-6">Media object</h2>
+    <div class="mt-4" style="max-width:480px">
+      <div class="media">
+        <span class="avatar">JD</span>
+        <div class="media-body">
+          <p class="media-title">Jane Doe triggered a run</p>
+          <p>All 14 tests passed. No regressions detected since last run.</p>
+          <span class="media-meta">2 minutes ago</span>
+        </div>
+      </div>
+      <div class="media">
+        <span class="avatar">SK</span>
+        <div class="media-body">
+          <p class="media-title">Sam Kim pushed a fix</p>
+          <p>Addressed flake in <code>auth/session.spec</code>.</p>
+          <span class="media-meta">18 minutes ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <h2 class="mt-6">Empty state</h2>
+    <div class="empty-state mt-4">
+      <div class="empty-state-icon">◻</div>
+      <h3>No runs yet</h3>
+      <p>Trigger your first test run to see results here.</p>
+      <button class="btn btn-primary mt-6">Run tests</button>
+    </div>
+
+    <!-- Layout grids -->
+    <h2 class="mt-6">Layout grids</h2>
+    <h4>grid-2</h4>
+    <div class="grid-2 mt-4">
+      <div class="grid-demo-cell">col 1</div>
+      <div class="grid-demo-cell">col 2</div>
+    </div>
+    <h4 class="mt-6">grid-3</h4>
+    <div class="grid-3 mt-4">
+      <div class="grid-demo-cell">col 1</div>
+      <div class="grid-demo-cell">col 2</div>
+      <div class="grid-demo-cell">col 3</div>
+    </div>
+    <h4 class="mt-6">grid-sidebar (main + 280px aside)</h4>
+    <div class="grid-sidebar mt-4">
+      <div class="grid-demo-cell">main</div>
+      <div class="grid-demo-cell">sidebar</div>
+    </div>
+    <pre class="mt-4"><code>&lt;div class="grid-2"&gt; … &lt;/div&gt;
+&lt;div class="grid-3"&gt; … &lt;/div&gt;
+&lt;div class="grid-sidebar"&gt; … &lt;/div&gt;</code></pre>
+
+    <!-- Theme toggle -->
+    <h2 class="mt-6">Theme</h2>
+    <p>Toggle between dark (default) and light by flipping the <code>data-theme</code> attribute on <code>&lt;html&gt;</code>. All semantic tokens resolve correctly in both modes.</p>
+    <div class="btn-group mt-4">
+      <button class="btn btn-secondary" onclick="document.documentElement.setAttribute('data-theme','dark')">Dark</button>
+      <button class="btn btn-secondary" onclick="document.documentElement.setAttribute('data-theme','light')">Light</button>
+    </div>
+  </div>
+
+
+  <footer>
+    <p>Open Test Kit &nbsp;·&nbsp; <a href="https://static.opentestkit.org/STYLE.md">STYLE.md</a></p>
+    <p class="easter">static.opentestkit.org/style/index.html</p>
+  </footer>
+
+</body>
+</html>
